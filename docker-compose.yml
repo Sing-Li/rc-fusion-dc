@@ -1,0 +1,14 @@
+mongo:
+  image: singli/mongorepl:fusion
+
+rocketchat:
+  image: singli/rc:fusion
+  environment:
+    - PORT=3020
+    - ROOT_URL=http://corei3:3020
+    - MONGO_OPLOG_URL=mongodb://mongo:27017/local
+    - MONGO_URL=mongodb://mongo:27017/rcfusion
+  ports:
+    - '3020:3020'
+  links:
+    - mongo:mongo
